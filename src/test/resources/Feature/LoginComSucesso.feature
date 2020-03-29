@@ -5,3 +5,4 @@ Scenario: Login realizado com sucesso
 	When Usuario navega ate a Pagina de Login 
 	And Usuario digita seu Usuario e Senha 
 	Then validar Login com sucesso
+	And finalizar

@@ -16,6 +16,11 @@ public class DriverFactory {
 		driver.get("https://www.advantageonlineshopping.com/#/");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
+	
+	public void encerrar() {
+		driver.quit();
+	}
+	
 	public void Esperar(String tempo) {
 		JavascriptExecutor javaScriptExecutor= (JavascriptExecutor) driver;
         javaScriptExecutor.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1],"+tempo+");");

@@ -5,3 +5,4 @@ Scenario: Login sem sucesso
 	When Usuario navega ate a Pagina de Login 
 	And Usuario digita seu Usuario e Senha invalidos 
 	Then exibir mensagem de erro
+	And finalizar

@@ -23,6 +23,7 @@ public class LoginStep {
 	@When("^Usuario navega ate a Pagina de Login$")
 	public void usuarioNavegaAteAPaginaDeLogin() throws Throwable {
 		login.clicarBotaoAcessoUsuarios();
+		Thread.sleep(5000);
 	}
 
 	@When("^Usuario digita seu Usuario e Senha$")
@@ -36,5 +37,10 @@ public class LoginStep {
 	@Then("^exibida Login com sucesso$")
 	public void validarLoginComSucesso() throws Throwable {
 		System.out.println("Login realizado com sucesso.");
+	}
+	
+	@Then("^finalizar$")
+	public void finalizar() throws Throwable {
+	    df.encerrar();
 	}
 }
