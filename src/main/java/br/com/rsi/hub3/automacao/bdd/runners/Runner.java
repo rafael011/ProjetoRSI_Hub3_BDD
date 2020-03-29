@@ -1,4 +1,4 @@
-package Runner;
+package br.com.rsi.hub3.automacao.bdd.runners;
 
 import org.junit.runner.RunWith;
 import cucumber.api.CucumberOptions;
@@ -7,8 +7,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		 features = "Feature",
-		 glue={"stepDefinition"},
+		 features = "src/test/resources/Feature", //Declarando local dos Gherkin
+		 glue={"br.com.rsi.hub3.automacao.bdd.steps"}, //Declarando o pacote das Steps
 		 snippets = SnippetType.CAMELCASE
 		 )
 public class Runner {
