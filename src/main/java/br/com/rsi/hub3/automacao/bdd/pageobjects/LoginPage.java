@@ -1,16 +1,20 @@
 package br.com.rsi.hub3.automacao.bdd.pageobjects;
 
-import java.util.concurrent.TimeUnit;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import br.com.rsi.hub3.automacao.bdd.utils.DriverFactory;
 
 public class LoginPage {
 	private WebDriver driver;
-	private DriverFactory df = new DriverFactory();
+	//private DriverFactory df = new DriverFactory();
+	
+//	public LoginPage(WebDriver driver) {
+//		PageFactory.initElements(driver, this);
+//	}
 	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
@@ -37,7 +41,7 @@ public class LoginPage {
 	
 	public void clicarBotaoAcessoUsuarios() {
 		botaoAcessoUsuarios.click();
-		df.Esperar("5000");
+		Esperar("5000");
 	}
 	
 	public void preencherLoginComExcel(String login) {
@@ -50,7 +54,7 @@ public class LoginPage {
 
 	public void clicarBotaoLogin() {
 		botaoLogin.click();
-		df.Esperar("5000");
+		Esperar("5000");
 	}
 	
 	public String validacaoLogin() {
@@ -58,7 +62,12 @@ public class LoginPage {
 	}
 	
 	public String validacaoLoginMensagemErro() {
-		df.Esperar("500");
+		Esperar("500");
 		return validacaoMsgErro.getText();
+	}
+	
+	public void Esperar(String tempo) {
+		JavascriptExecutor javaScriptExecutor= (JavascriptExecutor) driver;
+        javaScriptExecutor.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1],"+tempo+");");
 	}
 }

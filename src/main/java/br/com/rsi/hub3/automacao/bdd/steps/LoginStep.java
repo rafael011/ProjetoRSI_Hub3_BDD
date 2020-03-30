@@ -1,46 +1,51 @@
 package br.com.rsi.hub3.automacao.bdd.steps;
 
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.support.PageFactory;
 import br.com.rsi.hub3.automacao.bdd.pageobjects.LoginPage;
 import br.com.rsi.hub3.automacao.bdd.utils.DriverFactory;
 import cucumber.api.java.en.*;
+import cucumber.api.java.*;
 
 public class LoginStep {
 	private WebDriver driver;
 	private DriverFactory df = new DriverFactory();
-	private LoginPage login = new LoginPage(driver);
+	private LoginPage login;
 	
-	@Given("^Usuario esta na Pagina Inicial$")
-	public void usuarioEstaNaPaginaInicial() throws Throwable {
-		df.inicializar();
-	}
+	@Before
+	public void inicializar() throws Exception {
+		driver = df.inicializar();
+		login = PageFactory.initElements(driver, LoginPage.class);
+	}	
 
-	@When("^Usuario navega ate a Pagina de Login$")
-	public void usuarioNavegaAteAPaginaDeLogin() throws Throwable {
+	@Given("^Usuario clica no botao de acesso de usuarios$")
+	public void usuarioClicaNoBotaoDeAcessoDeUsuarios() throws Throwable {
 		login.clicarBotaoAcessoUsuarios();
-		Thread.sleep(5000);
 	}
 
-	@When("^Usuario digita seu Usuario e Senha$")
-	public void usuarioDigitaSeuUsuarioESenha() throws Throwable {
+	@When("^Usuario digita seu Usuario$")
+	public void usuarioDigitaSeuUsuario() throws Throwable {
 		login.preencherLoginComExcel("rafael05");
-		login.preencherSenhaComExcel("Rafa123");
-		login.clicarBotaoLogin();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
-	@Then("^exibida Login com sucesso$")
+	@When("^Usuario digita sua Senha$")
+	public void usuarioDigitaSuaSenha() throws Throwable {
+		login.preencherSenhaComExcel("Rafa123");
+	}
+
+	@When("^Usuario clica no botao Login$")
+	public void usuarioClicaNoBotaoLogin() throws Throwable {
+		login.clicarBotaoLogin();
+	}
+
+	@Then("^validar Login com sucesso$")
 	public void validarLoginComSucesso() throws Throwable {
-		System.out.println("Login realizado com sucesso.");
+	    login.validacaoLogin();
 	}
 	
-	@Then("^finalizar$")
-	public void finalizar() throws Throwable {
+	@After
+	public void finalizar() throws Exception {
 	    df.encerrar();
 	}
+	
 }
