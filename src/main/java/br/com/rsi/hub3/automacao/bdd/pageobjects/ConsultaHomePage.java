@@ -16,6 +16,7 @@ public class ConsultaHomePage {
 	
 	@FindBy (how = How.ID, using = "tabletsTxt")
 	private WebElement botaoTablets;
+	
 	@FindBy (how = How.ID, using = "tabletsLink")
 	private WebElement botaoLinkTablets;
 	
@@ -26,10 +27,11 @@ public class ConsultaHomePage {
 	private WebElement validacao;
 	
 	public void clicarBotaoTablets() {
-		Actions acao = new Actions(driver);
-		WebElement opcaoTablets = botaoTablets;
-		acao.moveToElement(opcaoTablets).perform();
-		botaoLinkTablets.click();
+//		Actions acao = new Actions(driver);
+//		WebElement opcaoTablets = botaoTablets;
+//		acao.moveToElement(opcaoTablets).perform();
+//		botaoLinkTablets.click();
+		botaoTablets.click();
 	}
 	
 	public boolean verificarBotaoInexistente(String produtoInexistente) {

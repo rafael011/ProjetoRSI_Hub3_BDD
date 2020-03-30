@@ -1,4 +1,5 @@
 package br.com.rsi.hub3.automacao.bdd.steps;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import br.com.rsi.hub3.automacao.bdd.pageobjects.ConsultaHomePage;
@@ -23,7 +24,7 @@ public class ConsultaHomeStep {
 	    df.encerrar();
 	}
 	
-	@When("^clicar no botao tablets$")
+	@Given("^clicar no botao tablets$")
 	public void clicarNoBotaoTablets() throws Throwable {
 	    home.clicarBotaoTablets();
 	}
@@ -31,5 +32,6 @@ public class ConsultaHomeStep {
 	@Then("^validar pagina do produto$")
 	public void validarPaginaDoProduto() throws Throwable {
 	    home.validacao();
+	    Assert.assertEquals("TRAVEL CONFIDENTLY AND IN STYLE", home.validacao());
 	}
 }

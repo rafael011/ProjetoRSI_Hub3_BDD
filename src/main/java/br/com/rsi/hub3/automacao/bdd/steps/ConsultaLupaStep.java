@@ -1,5 +1,6 @@
 package br.com.rsi.hub3.automacao.bdd.steps;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import br.com.rsi.hub3.automacao.bdd.pageobjects.ConsultaLupaPage;
@@ -42,6 +43,7 @@ public class ConsultaLupaStep {
 	@Then("^validar pagina do produto pesquisado$")
 	public void validarPaginaDoProdutoPesquisado() throws Throwable {
 	    lupa.validacao();
+	    Assert.assertEquals("HP CHROMEBOOK 14 G1(ENERGY STAR)", lupa.validacao());
 	}
 	
 }

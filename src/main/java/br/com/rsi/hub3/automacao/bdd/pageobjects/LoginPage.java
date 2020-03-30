@@ -41,7 +41,7 @@ public class LoginPage {
 	
 	public void clicarBotaoAcessoUsuarios() {
 		botaoAcessoUsuarios.click();
-		Esperar("5000");
+		Esperar("7000");
 	}
 	
 	public void preencherLoginComExcel(String login) {
