@@ -9,7 +9,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		 features = "src/test/resources/Feature", //Declarando local dos Gherkin
 		 glue={"br.com.rsi.hub3.automacao.bdd.steps"}, //Declarando o pacote das Steps
-		 snippets = SnippetType.CAMELCASE
+		 snippets = SnippetType.CAMELCASE,
+		 tags = "~@ignore"//"@consultahome"//"@cadastro" //
 		 )
 public class Runner {
 

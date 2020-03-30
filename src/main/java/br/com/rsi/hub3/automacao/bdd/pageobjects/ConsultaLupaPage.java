@@ -1,5 +1,6 @@
 package br.com.rsi.hub3.automacao.bdd.pageobjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,7 +40,7 @@ public class ConsultaLupaPage {
 	
 	public void preencherPesquisaLupa(String produto) {
 		campoLupa.sendKeys(produto);
-		df.Esperar("5000");
+		Esperar("5000");
 	}
 	public void clicarProdutoPesquisaLupa() {
 		clicarProduto.click();
@@ -55,5 +56,10 @@ public class ConsultaLupaPage {
 	
 	public String validacaoPesquisaInvalida() {
 		return validacaoPesquisaInvalida.getText();
+	}
+	
+	public void Esperar(String tempo) {
+		JavascriptExecutor javaScriptExecutor= (JavascriptExecutor) driver;
+        javaScriptExecutor.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1],"+tempo+");");
 	}
 }

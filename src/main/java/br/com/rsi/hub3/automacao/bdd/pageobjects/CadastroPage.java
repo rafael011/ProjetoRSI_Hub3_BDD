@@ -1,5 +1,6 @@
 package br.com.rsi.hub3.automacao.bdd.pageobjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +11,7 @@ import br.com.rsi.hub3.automacao.bdd.utils.DriverFactory;
 
 public class CadastroPage {
 	private WebDriver driver;
-	private DriverFactory df = new DriverFactory();
+	//private DriverFactory df = new DriverFactory();
 	
 	public CadastroPage(WebDriver driver) {
 		this.driver = driver;
@@ -73,7 +74,7 @@ public class CadastroPage {
 	
 	public void clicarBotaoAcessoUsuarios() {
 		botaoAcessoUsuarios.click();
-		df.Esperar("5000");
+		Esperar("5000");
 	}
 	
 	public void clicarBotaoCriarConta() {
@@ -109,9 +110,9 @@ public class CadastroPage {
 	}
 
 	public void selecionarPais(String pais) {
-		df.Esperar("3000");
+		Esperar("3000");
 		Select combobox = new Select(selecionaPais);
-		df.Esperar("3000");
+		Esperar("3000");
 		combobox.selectByVisibleText(pais);
 	}
 
@@ -135,9 +136,9 @@ public class CadastroPage {
 		opcaoAceitarTermos.click();
 	}
 
-	public void clicarBotaoRegistrar() {
+	public void clicarBotaoCadastrar() {
 		botaoRegistrar.click();
-		df.Esperar("2000");
+		Esperar("2000");
 	}
 	
 	public String validacaoCadastroMensagemErro() {
@@ -146,6 +147,11 @@ public class CadastroPage {
 	
 	public String validacaoCadastro() {
 		return validacao.getText();
+	}
+	
+	public void Esperar(String tempo) {
+		JavascriptExecutor javaScriptExecutor= (JavascriptExecutor) driver;
+        javaScriptExecutor.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1],"+tempo+");");
 	}
 	
 	
