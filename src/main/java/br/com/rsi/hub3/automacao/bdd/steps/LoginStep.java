@@ -20,22 +20,24 @@ public class LoginStep {
 	private LoginPage login;
 	private MassaDeDados excel;
 	
-	@Before
-	public void inicializar() throws Exception {
+//	@Before
+//	public void inicializar() throws Exception {
+//		driver = df.inicializar();
+//		login = PageFactory.initElements(driver, LoginPage.class);
+//		excel = new MassaDeDados();
+//	}
+//
+//	@After
+//	public void finalizar() throws Exception {
+//	    df.encerrar();
+//	}
+	
+	@Given("^iniciar$")
+	public void iniciar() throws Throwable {
 		driver = df.inicializar();
 		login = PageFactory.initElements(driver, LoginPage.class);
 		excel = new MassaDeDados();
 	}
-
-	@After
-	public void finalizar() throws Exception {
-	    df.encerrar();
-	}
-//	@Given("^estou na tela inicial$")
-//	public void estouNaTelaInicial() throws Throwable {
-//		driver = df.inicializar();
-//		login = PageFactory.initElements(driver, LoginPage.class);
-//	}
 	
 	@Given("^clicar no menu de acesso de usuarios$")
 	public void clicarNoMenuDeAcessoDeUsuarios() throws Throwable {
@@ -63,7 +65,7 @@ public class LoginStep {
 	public void validarLoginComSucesso() throws Throwable {
 		login.validacaoLogin();
 	    Assert.assertEquals("rafael05", login.validacaoLogin());
-	    //df.encerrar();
+	    df.encerrar();
 	}
 
 	@When("^preencher o campo Usuario com dados invalidos$")
@@ -79,5 +81,6 @@ public class LoginStep {
 	@Then("^validar mensagem de usuario ou senha invalidos$")
 	public void validarMensagemDeUsuarioOuSenhaInvalidos() throws Throwable {
 		Assert.assertEquals("Incorrect user name or password.", login.validacaoLoginMensagemErro());
+		df.encerrar();
 	}
 }

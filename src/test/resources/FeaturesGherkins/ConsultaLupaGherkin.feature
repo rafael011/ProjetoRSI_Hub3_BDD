@@ -1,7 +1,8 @@
 Feature: Consulta Lupa
 
 Background: 
-	Given clicar no botao da lupa de pesquisa
+	Given inicio
+	When clicar no botao da lupa de pesquisa
 	
 Scenario: Consulta Lupa com sucesso  
 	When preencher a barra de pesquisa da lupa 

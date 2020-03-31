@@ -1,8 +1,9 @@
 Feature: Cadastro 
 
 Background: 
-	Given clicar no botao de acesso de usuarios 
-	When clicar no botao Criar nova conta 
+	Given inicializar
+	When clicar no botao de acesso de usuarios 
+	And clicar no botao Criar nova conta 
 	
 Scenario: Cadastro com sucesso 
 	When preencher o campo usuario 

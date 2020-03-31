@@ -16,22 +16,22 @@ public class ConsultaLupaStep {
 	private DriverFactory df = new DriverFactory();
 	private ConsultaLupaPage lupa;
 	
-	@Before
-	public void inicializar() throws Exception {
-		driver = df.inicializar();
-		lupa = PageFactory.initElements(driver, ConsultaLupaPage.class);
-	}
-
-	@After
-	public void finalizar() throws Exception {
-	    df.encerrar();
-	}
-	
-//	@Given("^estou na tela inicial$")
-//	public void estouNaTelaInicial() throws Throwable {
+//	@Before
+//	public void inicializar() throws Exception {
 //		driver = df.inicializar();
 //		lupa = PageFactory.initElements(driver, ConsultaLupaPage.class);
 //	}
+//
+//	@After
+//	public void finalizar() throws Exception {
+//	    df.encerrar();
+//	}
+	
+	@Given("^inicio$")
+	public void inicio() throws Throwable {
+		driver = df.inicializar();
+		lupa = PageFactory.initElements(driver, ConsultaLupaPage.class);
+	}
 	
 	@Given("^clicar no botao da lupa de pesquisa$")
 	public void clicarNoBotaoDaLupaDePesquisa() throws Throwable {

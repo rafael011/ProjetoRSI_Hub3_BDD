@@ -1,7 +1,8 @@
 Feature: Login
 
 Background: 
-	Given clicar no menu de acesso de usuarios	
+	Given iniciar
+	When clicar no menu de acesso de usuarios	
 
 Scenario: Login com sucesso 
 	When preencher o campo Usuario 

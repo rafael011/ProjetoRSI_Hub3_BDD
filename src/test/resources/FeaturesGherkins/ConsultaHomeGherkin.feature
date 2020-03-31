@@ -1,5 +1,8 @@
 Feature: Consulta pagina inicial
 
+Background: 
+	Given inicial
+
 Scenario: Consulta pagina inicial com sucesso 
 	When clicar no botao tablets
 	Then validar pagina do produto

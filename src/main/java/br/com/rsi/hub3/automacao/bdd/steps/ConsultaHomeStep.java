@@ -13,23 +13,24 @@ public class ConsultaHomeStep {
 	private DriverFactory df = new DriverFactory();
 	private ConsultaHomePage home;
 	
-	@Before
-	public void inicializar() throws Exception {
-		driver = df.inicializar();
-		home = PageFactory.initElements(driver, ConsultaHomePage.class);
-	}
-
-	@After
-	public void finalizar() throws Exception {
-	    df.encerrar();
-	}
-//	@Given("^estou na tela inicial$")
-//	public void estouNaTelaInicial() throws Throwable {
+//	@Before
+//	public void inicializar() throws Exception {
 //		driver = df.inicializar();
 //		home = PageFactory.initElements(driver, ConsultaHomePage.class);
 //	}
+//
+//	@After
+//	public void finalizar() throws Exception {
+//	    df.encerrar();
+//	}
 	
-	@Given("^clicar no botao tablets$")
+	@Given("^inicial$")
+	public void estouNaTelaInicial() throws Throwable {
+		driver = df.inicializar();
+		home = PageFactory.initElements(driver, ConsultaHomePage.class);
+	}
+	
+	@When("^clicar no botao tablets$")
 	public void clicarNoBotaoTablets() throws Throwable {
 	    home.clicarBotaoTablets();
 	}
@@ -38,12 +39,12 @@ public class ConsultaHomeStep {
 	public void validarPaginaDoProduto() throws Throwable {
 	    home.validacao();
 	    Assert.assertEquals("TRAVEL CONFIDENTLY AND IN STYLE", home.validacao());
-	    //df.encerrar();
+	    df.encerrar();
 	}
 	
 	@Then("^validar produto inexistente$")
 	public void validarProdutoInexistente() throws Throwable {
 	    Assert.assertFalse(home.verificarBotaoInexistente("Smartphones"));
-	    //df.encerrar();
+	    df.encerrar();
 	}
 }

@@ -17,18 +17,24 @@ public class CadastroStep {
 	private DriverFactory df = new DriverFactory();
 	private CadastroPage cadastro;
 
-	@Before
-	public void inicializar() throws Exception {
+//	@Before
+//	public void inicializar() throws Exception {
+//		driver = df.inicializar();
+//		cadastro = PageFactory.initElements(driver, CadastroPage.class);
+//	}
+//
+//	@After
+//	public void finalizar() throws Exception {
+//		df.encerrar();
+//	}
+	
+	@Given("^inicializar$")
+	public void inicializar() throws Throwable {
 		driver = df.inicializar();
 		cadastro = PageFactory.initElements(driver, CadastroPage.class);
 	}
 
-	@After
-	public void finalizar() throws Exception {
-		df.encerrar();
-	}
-
-	@Given("^clicar no botao de acesso de usuarios$")
+	@When("^clicar no botao de acesso de usuarios$")
 	public void clicarNoBotaoDeAcessoDeUsuarios() throws Throwable {
 		cadastro.clicarBotaoAcessoUsuarios();
 	}
@@ -40,12 +46,12 @@ public class CadastroStep {
 
 	@When("^preencher o campo usuario$")
 	public void preencherOCampoUsuario() throws Throwable {
-		cadastro.preencherUsuario("rafael28");
+		cadastro.preencherUsuario("rafael29");
 	}
 
 	@When("^preencher o campo email$")
 	public void preencherOCampoEmail() throws Throwable {
-		cadastro.preencherEmail("rgc.test28@gmail.com");
+		cadastro.preencherEmail("rgc.test29@gmail.com");
 	}
 
 	@When("^preencher o campo senha$")
@@ -110,8 +116,8 @@ public class CadastroStep {
 
 	@Then("^validar cadastro com sucesso$")
 	public void validarCadastroComSucesso() throws Throwable {
-		Assert.assertEquals("rafael28", cadastro.validacaoCadastro());
-		//df.encerrar();
+		Assert.assertEquals("rafael29", cadastro.validacaoCadastro());
+		df.encerrar();
 	}
 	
 	@When("^preencher o campo usuario com dados ja cadastrados$")
@@ -127,6 +133,7 @@ public class CadastroStep {
 	@Then("^validar mensagem de usuario ja cadastrado$")
 	public void validarMensagemDeUsuarioJaCadastrado() throws Throwable {
 	    assertEquals("User name already exists", cadastro.validacaoCadastroMensagemErro());
+	    df.encerrar();
 	}
 
 }
