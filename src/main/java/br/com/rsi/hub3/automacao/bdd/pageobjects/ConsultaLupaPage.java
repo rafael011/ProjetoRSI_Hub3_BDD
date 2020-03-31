@@ -36,6 +36,7 @@ public class ConsultaLupaPage {
 	
 	public void clicarBotaoLupa() {
 		botaoLupa.click();
+		Esperar("3000");
 	}
 	
 	public void preencherPesquisaLupa(String produto) {

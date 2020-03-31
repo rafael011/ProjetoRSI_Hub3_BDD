@@ -1,6 +1,8 @@
 package br.com.rsi.hub3.automacao.bdd.pageobjects;
 
 import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,22 +22,15 @@ public class ConsultaHomePage {
 	@FindBy (how = How.ID, using = "tabletsLink")
 	private WebElement botaoLinkTablets;
 	
-	@FindBy (how = How.XPATH, using = "//span[@class='shop_now roboto-bold ng-binding']")
-	private WebElement verificarBotaoInexistente;
-	
 	@FindBy (how = How.XPATH, using = "//h1[@class='roboto-bold ng-binding']")
 	private WebElement validacao;
 	
 	public void clicarBotaoTablets() {
-//		Actions acao = new Actions(driver);
-//		WebElement opcaoTablets = botaoTablets;
-//		acao.moveToElement(opcaoTablets).perform();
-//		botaoLinkTablets.click();
 		botaoTablets.click();
 	}
 	
 	public boolean verificarBotaoInexistente(String produtoInexistente) {
-		List<WebElement> ListaElementosHome = (List<WebElement>) verificarBotaoInexistente;
+		List<WebElement> ListaElementosHome = driver.findElements(By.xpath("//span[@class='shop_now roboto-bold ng-binding']"));
 		for (WebElement elemento : ListaElementosHome) {
 			if (elemento.getText().contains(produtoInexistente)) {
 				return true;

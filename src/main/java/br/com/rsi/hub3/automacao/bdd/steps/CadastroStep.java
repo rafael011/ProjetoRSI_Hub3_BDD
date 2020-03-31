@@ -40,12 +40,12 @@ public class CadastroStep {
 
 	@When("^preencher o campo usuario$")
 	public void preencherOCampoUsuario() throws Throwable {
-		cadastro.preencherUsuario("rafael27");
+		cadastro.preencherUsuario("rafael28");
 	}
 
 	@When("^preencher o campo email$")
 	public void preencherOCampoEmail() throws Throwable {
-		cadastro.preencherEmail("rgc.test27@gmail.com");
+		cadastro.preencherEmail("rgc.test28@gmail.com");
 	}
 
 	@When("^preencher o campo senha$")
@@ -110,7 +110,7 @@ public class CadastroStep {
 
 	@Then("^validar cadastro com sucesso$")
 	public void validarCadastroComSucesso() throws Throwable {
-		Assert.assertEquals("rafael27", cadastro.validacaoCadastro());
+		Assert.assertEquals("rafael28", cadastro.validacaoCadastro());
 		//df.encerrar();
 	}
 	

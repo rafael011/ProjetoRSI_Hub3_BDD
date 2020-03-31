@@ -1,5 +1,6 @@
 package br.com.rsi.hub3.automacao.bdd.pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -71,8 +72,8 @@ public class CadastroPage {
 //	@FindBy (how = How.XPATH, using = "//*[@id=\"registerPage\"]/article/sec-form/div[2]/label[1]") 
 //	private WebElement validacaoMsgErro;
 	
-	@FindBy (how = How.XPATH, using = "/html/body/div[3]/section/article/sec-form/div[2]/label[1]") 
-	private WebElement validacaoMsgErro;
+//	@FindBy (how = How.XPATH, using = "/html/body/div[3]/section/article/sec-form/div[2]/label[1]") 
+//	private WebElement validacaoMsgErro;
 	
 	
 	public void clicarBotaoAcessoUsuarios() {
@@ -149,9 +150,14 @@ public class CadastroPage {
 		return validacao.getText();
 	}
 	
+//	public String validacaoCadastroMensagemErro() {
+//		Esperar("500");
+//		return validacaoMsgErro.getText();
+//	}
+	
 	public String validacaoCadastroMensagemErro() {
-		Esperar("500");
-		return validacaoMsgErro.getText();
+		WebElement validacao = driver.findElement(By.xpath("//*[@id=\"registerPage\"]/article/sec-form/div[2]/label[1]"));
+		return validacao.getText();
 	}
 	
 	public void Esperar(String tempo) {

@@ -1,5 +1,6 @@
 package br.com.rsi.hub3.automacao.bdd.pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,8 +34,8 @@ public class LoginPage {
 	@FindBy (how = How.XPATH, using = "//span[@class='hi-user containMiniTitle ng-binding']")
 	private WebElement validacao;
 	
-	@FindBy (how = How.ID, using = "//label[@id='signInResultMessage']")
-	private WebElement validacaoMsgErro;
+//	@FindBy (how = How.ID, using = "//label[@id='signInResultMessage']")
+//	private WebElement validacaoMsgErro;
 	
 	
 	public void clicarBotaoAcessoUsuarios() {
@@ -59,9 +60,15 @@ public class LoginPage {
 		return validacao.getText();
 	}
 	
-	public String validacaoLoginMensagemErro() {
+//	public String validacaoLoginMensagemErro() {
+//		Esperar("500");
+//		return validacaoMsgErro.getText();
+//	}
+	
+	public String validacaoLoginMensagemErro() throws InterruptedException {
+		WebElement validacao = driver.findElement(By.xpath("//label[@id='signInResultMessage']"));
 		Esperar("500");
-		return validacaoMsgErro.getText();
+		return validacao.getText();
 	}
 	
 	public void Esperar(String tempo) {

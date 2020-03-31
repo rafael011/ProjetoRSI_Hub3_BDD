@@ -75,11 +75,9 @@ public class LoginStep {
 	public void preencherOCampoSenhaComDadosInvalidos() throws Throwable {
 		login.preencherSenha(excel.getSenhaInvalida());
 	}
-
-	@Then("^validar mensagem de erro$")
+	
+	@Then("^validar mensagem de usuario ou senha invalidos$")
 	public void validarMensagemDeUsuarioOuSenhaInvalidos() throws Throwable {
-		login.validacaoLoginMensagemErro();
-	    Assert.assertEquals("Incorrect user name or password.", login.validacaoLogin());
-	    //df.encerrar();
+		Assert.assertEquals("Incorrect user name or password.", login.validacaoLoginMensagemErro());
 	}
 }
