@@ -12,12 +12,10 @@ public class LoginPage {
 	private WebDriver driver;
 	//private DriverFactory df = new DriverFactory();
 	
-//	public LoginPage(WebDriver driver) {
-//		PageFactory.initElements(driver, this);
-//	}
 	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
+		//PageFactory.initElements(driver, this);
 	}
 	
 	@FindBy (how = How.ID, using = "menuUserLink")
@@ -41,14 +39,14 @@ public class LoginPage {
 	
 	public void clicarBotaoAcessoUsuarios() {
 		botaoAcessoUsuarios.click();
-		Esperar("7000");
+		Esperar("5000");
 	}
 	
-	public void preencherLoginComExcel(String login) {
+	public void preencherLogin(String login) {
 		campoLogin.sendKeys(login);
 	}
 
-	public void preencherSenhaComExcel(String senha) {
+	public void preencherSenha(String senha) {
 		campoSenha.sendKeys(senha);
 	}
 

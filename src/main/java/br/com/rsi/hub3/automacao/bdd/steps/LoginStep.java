@@ -3,6 +3,8 @@ package br.com.rsi.hub3.automacao.bdd.steps;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
+import br.com.rsi.hub3.automacao.bdd.pageobjects.ConsultaLupaPage;
 import br.com.rsi.hub3.automacao.bdd.pageobjects.LoginPage;
 import br.com.rsi.hub3.automacao.bdd.utils.DriverFactory;
 import br.com.rsi.hub3.automacao.bdd.utils.MassaDeDados;
@@ -29,33 +31,55 @@ public class LoginStep {
 	public void finalizar() throws Exception {
 	    df.encerrar();
 	}
+//	@Given("^estou na tela inicial$")
+//	public void estouNaTelaInicial() throws Throwable {
+//		driver = df.inicializar();
+//		login = PageFactory.initElements(driver, LoginPage.class);
+//	}
 	
-	@Given("^Usuario clica no botao de acesso de usuarios$")
-	public void clicarNoBotaoDeAcessoDeUsuarios() throws Throwable {
+	@Given("^clicar no menu de acesso de usuarios$")
+	public void clicarNoMenuDeAcessoDeUsuarios() throws Throwable {
 		login.clicarBotaoAcessoUsuarios();
 	}
 
-	@When("^Usuario digita seu Usuario$")
+	@When("^preencher o campo Usuario$")
 	public void preencherOCampoUsuario() throws Throwable {
-		login.preencherLoginComExcel(excel.getUsuario());
-		//login.preencherLoginComExcel("rafael14");
+		login.preencherLogin(excel.getUsuario());
+		//login.preencherLogin("rafael14");
 	}
 
-	@When("^Usuario digita sua Senha$")
+	@When("^preencher o campo Senha$")
 	public void preencherOCampoSenha() throws Throwable {
-		login.preencherSenhaComExcel(excel.getSenha());
-		//login.preencherSenhaComExcel("Rafa123");
+		login.preencherSenha(excel.getSenha());
+		//login.preencherSenha("Rafa123");
 	}
 
-//	@When("^Usuario clica no botao Login$")
-//	public void clicarNoBotaoLogin() throws Throwable {
-//		login.clicarBotaoLogin();
-//	}
-//
-//	@Then("^validar Login com sucesso$")
-//	public void validarLoginComSucesso() throws Throwable {
-//	    login.validacaoLogin();
-//	    Assert.assertEquals("rafael14", login.validacaoLogin());
-//	}
-	
+	@When("^clicar no botao Login$")
+	public void clicarNoBotaoLogin() throws Throwable {
+		login.clicarBotaoLogin();
+	}
+
+	@Then("^validar Login com sucesso$")
+	public void validarLoginComSucesso() throws Throwable {
+		login.validacaoLogin();
+	    Assert.assertEquals("rafael05", login.validacaoLogin());
+	    //df.encerrar();
+	}
+
+	@When("^preencher o campo Usuario com dados invalidos$")
+	public void preencherOCampoUsuarioComDadosInvalidos() throws Throwable {
+		login.preencherLogin(excel.getUsuarioInvalido());
+	}
+
+	@When("^preencher o campo Senha com dados invalidos$")
+	public void preencherOCampoSenhaComDadosInvalidos() throws Throwable {
+		login.preencherSenha(excel.getSenhaInvalida());
+	}
+
+	@Then("^validar mensagem de erro$")
+	public void validarMensagemDeUsuarioOuSenhaInvalidos() throws Throwable {
+		login.validacaoLoginMensagemErro();
+	    Assert.assertEquals("Incorrect user name or password.", login.validacaoLogin());
+	    //df.encerrar();
+	}
 }

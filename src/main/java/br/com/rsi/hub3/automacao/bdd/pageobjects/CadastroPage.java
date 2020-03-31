@@ -65,11 +65,14 @@ public class CadastroPage {
 	@FindBy(how = How.ID, using = "register_btnundefined")
 	private WebElement botaoRegistrar;
 	
-	@FindBy (how = How.XPATH, using = "//*[@id=\"registerPage\"]/article/sec-form/div[2]/label[1]")
-	private WebElement validacaoMsgErro;
-	
 	@FindBy (how = How.XPATH, using = "//span[@class='hi-user containMiniTitle ng-binding']")
-	private WebElement validacao;
+	private WebElement validacao;	
+	
+//	@FindBy (how = How.XPATH, using = "//*[@id=\"registerPage\"]/article/sec-form/div[2]/label[1]") 
+//	private WebElement validacaoMsgErro;
+	
+	@FindBy (how = How.XPATH, using = "/html/body/div[3]/section/article/sec-form/div[2]/label[1]") 
+	private WebElement validacaoMsgErro;
 	
 	
 	public void clicarBotaoAcessoUsuarios() {
@@ -138,21 +141,25 @@ public class CadastroPage {
 
 	public void clicarBotaoCadastrar() {
 		botaoRegistrar.click();
-		Esperar("2000");
-	}
-	
-	public String validacaoCadastroMensagemErro() {
-		return validacaoMsgErro.getText();
+		Esperar("5000");
 	}
 	
 	public String validacaoCadastro() {
+		Esperar("1000");
 		return validacao.getText();
+	}
+	
+	public String validacaoCadastroMensagemErro() {
+		Esperar("500");
+		return validacaoMsgErro.getText();
 	}
 	
 	public void Esperar(String tempo) {
 		JavascriptExecutor javaScriptExecutor= (JavascriptExecutor) driver;
         javaScriptExecutor.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1],"+tempo+");");
 	}
+	
+	
 	
 	
 }

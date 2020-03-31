@@ -1,6 +1,9 @@
 package br.com.rsi.hub3.automacao.bdd.steps;
 
 import cucumber.api.java.en.*;
+
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -37,12 +40,12 @@ public class CadastroStep {
 
 	@When("^preencher o campo usuario$")
 	public void preencherOCampoUsuario() throws Throwable {
-		cadastro.preencherUsuario("rafael22");
+		cadastro.preencherUsuario("rafael27");
 	}
 
 	@When("^preencher o campo email$")
 	public void preencherOCampoEmail() throws Throwable {
-		cadastro.preencherEmail("rgc.test22@gmail.com");
+		cadastro.preencherEmail("rgc.test27@gmail.com");
 	}
 
 	@When("^preencher o campo senha$")
@@ -107,8 +110,23 @@ public class CadastroStep {
 
 	@Then("^validar cadastro com sucesso$")
 	public void validarCadastroComSucesso() throws Throwable {
-		cadastro.validacaoCadastro();
-		Assert.assertEquals("rafael22", cadastro.validacaoCadastro());
+		Assert.assertEquals("rafael27", cadastro.validacaoCadastro());
+		//df.encerrar();
+	}
+	
+	@When("^preencher o campo usuario com dados ja cadastrados$")
+	public void preencherOCampoUsuarioComDadosJaCadastrados() throws Throwable {
+	    cadastro.preencherUsuario("rafael05");
+	}
+
+	@When("^preencher o campo email com dados ja cadastrados$")
+	public void preencherOCampoEmailComDadosJaCadastrados() throws Throwable {
+	    cadastro.preencherEmail("rgc.teste1@gmail.com");
+	}
+
+	@Then("^validar mensagem de usuario ja cadastrado$")
+	public void validarMensagemDeUsuarioJaCadastrado() throws Throwable {
+	    assertEquals("User name already exists", cadastro.validacaoCadastroMensagemErro());
 	}
 
 }

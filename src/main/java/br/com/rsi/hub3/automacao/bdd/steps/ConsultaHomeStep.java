@@ -23,6 +23,11 @@ public class ConsultaHomeStep {
 	public void finalizar() throws Exception {
 	    df.encerrar();
 	}
+//	@Given("^estou na tela inicial$")
+//	public void estouNaTelaInicial() throws Throwable {
+//		driver = df.inicializar();
+//		home = PageFactory.initElements(driver, ConsultaHomePage.class);
+//	}
 	
 	@Given("^clicar no botao tablets$")
 	public void clicarNoBotaoTablets() throws Throwable {
@@ -33,5 +38,12 @@ public class ConsultaHomeStep {
 	public void validarPaginaDoProduto() throws Throwable {
 	    home.validacao();
 	    Assert.assertEquals("TRAVEL CONFIDENTLY AND IN STYLE", home.validacao());
+	    //df.encerrar();
+	}
+	
+	@Then("^validar produto inexistente$")
+	public void validarProdutoInexistente() throws Throwable {
+	    Assert.assertFalse(home.verificarBotaoInexistente("Smartphones"));
+	    //df.encerrar();
 	}
 }
